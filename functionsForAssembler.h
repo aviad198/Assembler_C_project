@@ -31,7 +31,7 @@ void skipWhite();
 int isGuide(char *param);
 void int2bin(int integer, char* binary, int n);
 bool isNum (char * param);
-
+void addSign(char label[50], char character[50], int value);
 
 typedef struct{
     char label[50];
