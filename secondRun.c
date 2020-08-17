@@ -14,6 +14,9 @@ void secondRun() {
             }break;
         }
     }
+    free(curSNode);
+    free(curDNode);
+    free(curCNode);
     free(sHead);
     free(dHead);
     free(Chead);
