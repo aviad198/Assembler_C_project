@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c
+/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c
 FirstRun.h
-/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.h
+/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.h
 
-/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.h
+/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.h
 functionsForAssembler.h
-/home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.h
+/home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.h
 stdio.h
 -
 string.h
@@ -26,7 +26,7 @@ stdbool.h
 math.h
 -
 
-/home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.h
+/home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.h
 stdbool.h
 -
 string.h

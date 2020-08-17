@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug"/>
+				<Option working_dir="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug"/>
+				<Option working_dir="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="final_project_C">
-				<Option output="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/final_project_C" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug"/>
+				<Option output="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/final_project_C" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -41,15 +41,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 final_project_C"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 final_project_C"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="final_project_C/fast">
-				<Option output="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/final_project_C" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug"/>
+				<Option output="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/final_project_C" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -61,51 +61,54 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 final_project_C/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 final_project_C/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug"/>
+				<Option working_dir="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.h">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.h">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.c">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.c">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.h">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.h">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/main.c">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.c">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/main.h">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.h">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.c">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.c">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.h">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.h">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/test.as">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/test.as">
 			<Option target="final_project_C"/>
 		</Unit>
-		<Unit filename="/home/aviad/CLionProjects/mmn14n/final_project_C/CMakeLists.txt">
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/test1.as">
+			<Option target="final_project_C"/>
+		</Unit>
+		<Unit filename="/home/aviad/CLionProjects/mmn14n/Assembler_C_project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

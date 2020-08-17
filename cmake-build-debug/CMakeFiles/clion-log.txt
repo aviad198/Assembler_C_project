@@ -1,4 +1,4 @@
-/home/aviad/Downloads/CLion-2019.3.5/clion-2019.3.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/aviad/CLionProjects/mmn14n/final_project_C
+/home/aviad/Downloads/CLion-2019.3.5/clion-2019.3.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/aviad/CLionProjects/mmn14n/Assembler_C_project
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug
+-- Build files have been written to: /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug

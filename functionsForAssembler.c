@@ -91,8 +91,8 @@ bool isNum (char * param){
     int num;
     char *end;
 
-    strtol(param, &end,10);
-    if (end<= (param+strlen(param))){
+    num = strtol(param, &end,10);
+    if (end<= (param+strlen(param)) && ((!isspace(*end)) && *end != '\0')){
         return 0;
     }
     return 1;

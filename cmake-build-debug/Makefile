@@ -48,10 +48,10 @@ RM = /home/aviad/Downloads/CLion-2019.3.5/clion-2019.3.5/bin/cmake/linux/bin/cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aviad/CLionProjects/mmn14n/final_project_C
+CMAKE_SOURCE_DIR = /home/aviad/CLionProjects/mmn14n/Assembler_C_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug
+CMAKE_BINARY_DIR = /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

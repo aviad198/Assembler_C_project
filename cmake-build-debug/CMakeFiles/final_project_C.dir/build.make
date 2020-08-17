@@ -43,10 +43,10 @@ RM = /home/aviad/Downloads/CLion-2019.3.5/clion-2019.3.5/bin/cmake/linux/bin/cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aviad/CLionProjects/mmn14n/final_project_C
+CMAKE_SOURCE_DIR = /home/aviad/CLionProjects/mmn14n/Assembler_C_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug
+CMAKE_BINARY_DIR = /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/final_project_C.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/final_project_C.dir/flags.make
 
 CMakeFiles/final_project_C.dir/main.c.o: CMakeFiles/final_project_C.dir/flags.make
 CMakeFiles/final_project_C.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/final_project_C.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/main.c.o   -c /home/aviad/CLionProjects/mmn14n/final_project_C/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/final_project_C.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/main.c.o   -c /home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.c
 
 CMakeFiles/final_project_C.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/final_project_C.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/final_project_C/main.c > CMakeFiles/final_project_C.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.c > CMakeFiles/final_project_C.dir/main.c.i
 
 CMakeFiles/final_project_C.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/final_project_C.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/final_project_C/main.c -o CMakeFiles/final_project_C.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.c -o CMakeFiles/final_project_C.dir/main.c.s
 
 CMakeFiles/final_project_C.dir/FirstRun.c.o: CMakeFiles/final_project_C.dir/flags.make
 CMakeFiles/final_project_C.dir/FirstRun.c.o: ../FirstRun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/final_project_C.dir/FirstRun.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/FirstRun.c.o   -c /home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/final_project_C.dir/FirstRun.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/FirstRun.c.o   -c /home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c
 
 CMakeFiles/final_project_C.dir/FirstRun.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/final_project_C.dir/FirstRun.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c > CMakeFiles/final_project_C.dir/FirstRun.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c > CMakeFiles/final_project_C.dir/FirstRun.c.i
 
 CMakeFiles/final_project_C.dir/FirstRun.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/final_project_C.dir/FirstRun.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c -o CMakeFiles/final_project_C.dir/FirstRun.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c -o CMakeFiles/final_project_C.dir/FirstRun.c.s
 
 CMakeFiles/final_project_C.dir/secondRun.c.o: CMakeFiles/final_project_C.dir/flags.make
 CMakeFiles/final_project_C.dir/secondRun.c.o: ../secondRun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/final_project_C.dir/secondRun.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/secondRun.c.o   -c /home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/final_project_C.dir/secondRun.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/secondRun.c.o   -c /home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.c
 
 CMakeFiles/final_project_C.dir/secondRun.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/final_project_C.dir/secondRun.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.c > CMakeFiles/final_project_C.dir/secondRun.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.c > CMakeFiles/final_project_C.dir/secondRun.c.i
 
 CMakeFiles/final_project_C.dir/secondRun.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/final_project_C.dir/secondRun.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.c -o CMakeFiles/final_project_C.dir/secondRun.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.c -o CMakeFiles/final_project_C.dir/secondRun.c.s
 
 CMakeFiles/final_project_C.dir/functionsForAssembler.c.o: CMakeFiles/final_project_C.dir/flags.make
 CMakeFiles/final_project_C.dir/functionsForAssembler.c.o: ../functionsForAssembler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/final_project_C.dir/functionsForAssembler.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/functionsForAssembler.c.o   -c /home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/final_project_C.dir/functionsForAssembler.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/final_project_C.dir/functionsForAssembler.c.o   -c /home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.c
 
 CMakeFiles/final_project_C.dir/functionsForAssembler.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/final_project_C.dir/functionsForAssembler.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.c > CMakeFiles/final_project_C.dir/functionsForAssembler.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.c > CMakeFiles/final_project_C.dir/functionsForAssembler.c.i
 
 CMakeFiles/final_project_C.dir/functionsForAssembler.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/final_project_C.dir/functionsForAssembler.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.c -o CMakeFiles/final_project_C.dir/functionsForAssembler.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.c -o CMakeFiles/final_project_C.dir/functionsForAssembler.c.s
 
 # Object files for target final_project_C
 final_project_C_OBJECTS = \
@@ -125,7 +125,7 @@ final_project_C: CMakeFiles/final_project_C.dir/secondRun.c.o
 final_project_C: CMakeFiles/final_project_C.dir/functionsForAssembler.c.o
 final_project_C: CMakeFiles/final_project_C.dir/build.make
 final_project_C: CMakeFiles/final_project_C.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable final_project_C"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable final_project_C"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/final_project_C.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +138,6 @@ CMakeFiles/final_project_C.dir/clean:
 .PHONY : CMakeFiles/final_project_C.dir/clean
 
 CMakeFiles/final_project_C.dir/depend:
-	cd /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/aviad/CLionProjects/mmn14n/final_project_C /home/aviad/CLionProjects/mmn14n/final_project_C /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug /home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/final_project_C.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/aviad/CLionProjects/mmn14n/Assembler_C_project /home/aviad/CLionProjects/mmn14n/Assembler_C_project /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug /home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/final_project_C.dir/depend
 

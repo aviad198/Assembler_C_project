@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/aviad/CLionProjects/mmn14n/final_project_C/FirstRun.c" "/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/final_project_C.dir/FirstRun.c.o"
-  "/home/aviad/CLionProjects/mmn14n/final_project_C/functionsForAssembler.c" "/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/final_project_C.dir/functionsForAssembler.c.o"
-  "/home/aviad/CLionProjects/mmn14n/final_project_C/main.c" "/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/final_project_C.dir/main.c.o"
-  "/home/aviad/CLionProjects/mmn14n/final_project_C/secondRun.c" "/home/aviad/CLionProjects/mmn14n/final_project_C/cmake-build-debug/CMakeFiles/final_project_C.dir/secondRun.c.o"
+  "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/FirstRun.c" "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir/FirstRun.c.o"
+  "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/functionsForAssembler.c" "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir/functionsForAssembler.c.o"
+  "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/main.c" "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir/main.c.o"
+  "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/secondRun.c" "/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir/secondRun.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

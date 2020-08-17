@@ -271,6 +271,7 @@ void addData() {
             return;
 
         } else {
+            getVar();
             if(!insertData())
                 return;
             }
@@ -282,6 +283,7 @@ void addData() {
 
 
 bool insertData() {
+
     if (!isNum(param)) {
         printf("wrong input for data\n");
         return 0;
@@ -289,6 +291,7 @@ bool insertData() {
         /*insert data*/
         curDNode->data.num = atoi(param);
         curDNode->next = (dataNode *) malloc(sizeof(dataNode));
+        printf("data: %d\n", curDNode->data.num);
         curDNode = curDNode->next;
         DC++;
         return 1;
