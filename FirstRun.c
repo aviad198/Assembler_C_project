@@ -190,7 +190,11 @@ void addString() {
 
         /*adds the char to data linked list*/
         curDNode->data.ch = *p;
-        curDNode->next = (dataNode *) malloc(sizeof(dataNode));
+        if(!(curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
+            printf("Memory allocate failure");
+            return;
+        }
+
 
         printf("%d: %c\n", check, curDNode->data.ch);
 
@@ -208,7 +212,11 @@ void addString() {
     }
     /*adds the char \0 at the end of linked list*/
     curDNode->data.ch = '\0';
-    curDNode->next = (dataNode *) malloc(sizeof(dataNode));
+    if(!( curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
+        printf("Memory allocate failure");
+        return;
+    }
+
     curDNode =  curDNode->next;
     DC++;
 
@@ -283,14 +291,17 @@ void addData() {
 
 
 bool insertData() {
-
     if (!isNum(param)) {
         printf("wrong input for data\n");
         return 0;
     } else {
         /*insert data*/
         curDNode->data.num = atoi(param);
-        curDNode->next = (dataNode *) malloc(sizeof(dataNode));
+
+        if(!( curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
+            printf("Memory allocate failure");
+            return 0;
+        }
         printf("data: %d\n", curDNode->data.num);
         curDNode = curDNode->next;
         DC++;
@@ -496,7 +507,11 @@ void fillin_extraBinCode(int num) {
     char binary[22];
     int2bin(num, binary, 21);
     IC++;
-    curCNode->next= (CNode *) malloc(sizeof(CNode)); // set new node for int adress
+    if(!( curCNode->next= (CNode *) malloc(sizeof(CNode)))){// set new node for int adress
+        printf("Memory allocate failure");
+        return;
+    }
+
     curCNode = curCNode->next;
     curCNode->code.adress = IC;
     memset(curCNode->code.binCode, '0', 24);
@@ -627,7 +642,11 @@ void get_opcode(char *opcode) {
         printf("----------------------------------end of the command %s\n", Code);
         return;
     }
-    curCNode->next = (CNode *) malloc(sizeof(CNode)); // set new node for int adress
+    if(!(curCNode->next = (CNode *) malloc(sizeof(CNode)))){// set new node for int adress
+        printf("Memory allocate failure");
+        return;
+    }
+
     curCNode = curCNode->next;
     curCNode->code.binCode[24] = '\0';
     IC++;
