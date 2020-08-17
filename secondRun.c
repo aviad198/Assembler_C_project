@@ -26,6 +26,16 @@ void secondRun() {
 
         }
     }
+    if(goodFile) {
+        if (hasExtern) {
+
+        }
+
+        if (hasEntry){
+
+        }
+
+    }
     free(curSNode);
     free(curDNode);
     free(curCNode);

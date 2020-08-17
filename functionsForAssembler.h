@@ -18,7 +18,9 @@
 #define MAX_LENGTH 200
 
 
-
+bool goodFile = true;
+bool hasExtern = false;
+bool hasEntry =false;
 char label[50];
 char line[MAX_LENGTH];
 char *p;
