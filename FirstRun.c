@@ -38,25 +38,26 @@ int targMeth[TOTAL_OP][4] = {{-1, 1, -1, 3},
                              {-1},
                              {-1}};
 int oprndN[TOTAL_OP] = {2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0};
-
-
+int lineCounter = 0;
 /*start first run */
 void firstRun() {
-
+    goodFile =true;
+    hasExtern =false;
+    hasEntry =false;
     /*new heads for linked lists */
-    if(!(sHead = (symboleTabel *) malloc(sizeof(symboleTabel)))){
-        printf("Memory allocate failure");
+    if (!(sHead = (symboleTabel *) malloc(sizeof(symboleTabel)))) {
+        fprintf(stderr, "Memory allocate failure");
         return;
     }
     curSNode = sHead;
     curSNode->sign.label[0] = '\0';
-    if(!(dHead = (dataNode *) malloc(sizeof(dataNode)))){
-        printf("Memory allocate failure");
+    if (!(dHead = (dataNode *) malloc(sizeof(dataNode)))) {
+        fprintf(stderr, "Memory allocate failure");
         return;
     }
     curDNode = dHead;
-    if(!( Chead = (CNode *) malloc(sizeof(CNode)))){
-        printf("Memory allocate failure");
+    if (!(Chead = (CNode *) malloc(sizeof(CNode)))) {
+        fprintf(stderr, "Memory allocate failure");
         return;
     }
     curCNode = Chead;
@@ -64,6 +65,7 @@ void firstRun() {
     fillin_op_table();
     /*while file has a line*/
     while (fgets(line, MAX_LENGTH, fp)) {
+        lineCounter++;
         /*points to first letter in line*/
         p = line;
         if (*p == ';') {
@@ -76,24 +78,29 @@ void firstRun() {
             int i;
             int length = strlen(label);
             if (inLabelTab(label)) {
-                printf("alleardy is label with same name\n");
+                fprintf(stdout, "line %d:alleardy is label with same name\n", lineCounter);
+                goodFile=false;
                 continue;
             }
             if (!isalpha(*label)) {//*param < 'A' || (*param > 'Z' && *param < 'a') || *param > 'z')
-                printf("label has to start with letter\n");
+                fprintf(stdout, "line %d:label has to start with letter\n", lineCounter);
+                goodFile=false;
                 continue;
             }
             if (length > 31) {
-                printf("label is too long\n");
+                fprintf(stdout, "line %d:label is too long\n", lineCounter);
+                goodFile=false;
                 continue;
             }
             if (isGuide(label)) { /*need - or command or register or already is a label*/
-                printf("unvalid name for label\n");
+                fprintf(stdout, "line %d:unvalid name for label\n", lineCounter);
+                goodFile=false;
                 continue;
             }
             for (i = 0; i < length; i++) {
                 if (!isalnum(*(label + i))) {
-                    printf("label has to be contain alpha/num\n");
+                    fprintf(stdout, "line %d:label has to be contain alpha/num\n", lineCounter);
+                    goodFile=false;
                     continue;
                 }
             }
@@ -107,7 +114,6 @@ void firstRun() {
         switch (isGuide(param)) {
             /*.data guide */
             case 1: {
-
                 if (labelFlag)
                     addSign(label, "data", DC);
                 //getParam();
@@ -130,15 +136,16 @@ void firstRun() {
                 /*extern guide*/
             case 4: {
                 if (labelFlag) {
-                    printf("cant put .extern after label");
+                    fprintf(stdout, "line %d: cant put .extern after label", lineCounter);
                     continue;
                 }
                 getParam();
                 if (*param == '\n') {
-                    printf("missing extern label");
+                    fprintf(stdout, "line %d: missing extern label", lineCounter);
                     continue;
                 }
                 addSign(param, "external", 0);
+                hasExtern =true;
             }
                 break;
             default: {
@@ -171,18 +178,21 @@ void addString() {
     skipWhite();
     /*if nothing to add to data*/
     if (*p == '\n') {
-        printf("missing data\n");
+        fprintf(stdout,"line %d: missing data\n",lineCounter );
+        goodFile =false;
         return;
     }
     /*dosnt start string with " */
     if (*p != '\"') {
-        printf("has to start with \" \n");
+        fprintf(stdout,"line %d: has to start with \" \n",lineCounter );
+        goodFile =false;
         return;
     }
     p++;
     skipWhite();
-    if (!isascii(*p)) { //maybe needs to be changed to isascii
-        printf("missing char\n");
+    if (!isascii(*p)) {
+        fprintf(stdout,"line %d: missing char\n",lineCounter );
+        goodFile =false;
         return;
     }
     /*while not end of line or end of string*/
@@ -190,13 +200,13 @@ void addString() {
 
         /*adds the char to data linked list*/
         curDNode->data.ch = *p;
-        if(!(curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
-            printf("Memory allocate failure");
+        if (!(curDNode->next = (dataNode *) malloc(sizeof(dataNode)))) {
+            fprintf(stdout,"line %d: Memory allocate failure\n",lineCounter );
+            goodFile =false;
             return;
         }
 
 
-        printf("%d: %c\n", check, curDNode->data.ch);
 
         curDNode = curDNode->next;
 
@@ -207,24 +217,26 @@ void addString() {
     }
     /*check if last char is "*/
     if (*p != '\"') {
-        printf("has to end with \" \n");
+        fprintf(stdout,"line %d: has to end with \" \n",lineCounter );
+        goodFile =false;
         return;
     }
     /*adds the char \0 at the end of linked list*/
     curDNode->data.ch = '\0';
-    if(!( curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
-        printf("Memory allocate failure");
+    if (!(curDNode->next = (dataNode *) malloc(sizeof(dataNode)))) {
+        fprintf(stdout,"line %d: Memory allocate failure\n",lineCounter );
+        goodFile =false;
         return;
     }
 
-    curDNode =  curDNode->next;
+    curDNode = curDNode->next;
     DC++;
 
     p++;
     skipWhite();
     if (*p != '\0') {
-        printf("extra input after .string\n");
-
+        fprintf(stdout,"line %d: extra input after .string\n",lineCounter );
+        goodFile =false;
         return;
     }
 
@@ -234,75 +246,74 @@ int startWithComma() {
     skipWhite();
     /*if starts with comma*/
     if (*p == ',') {
-        printf("statement cannot start with a comma\n");
+        fprintf(stdout,"line %d: statement cannot start with a comma\n",lineCounter );
+        goodFile =false;
         return 0;
     }
     /*if empty data*/
     if (*p == '\n') {
-        printf("missing data\n");
+        fprintf(stdout,"line %d: missing data\n",lineCounter );
+        goodFile =false;
         return 0;
     }
     return 1;
 }
 
 
-/*adds data to data linked list*
- *
- * needs- a. return error if comma after last var*/
+/*adds data to data linked list*/
 
 void addData() {
-    int check = 0;//temporary check
     skipWhite();
-
     /*if starts with comma*/
     if (*p == ',') {
-        printf("bad place for comma\n");
+        fprintf(stdout,"line %d: bad place for comma\n",lineCounter );
+        goodFile =false;
         return;
     }
     /*if empty data*/
     if (*p == '\n') {
-        printf("missing data\n");
+        fprintf(stdout,"line %d: missing data\n",lineCounter );
+        goodFile =false;
         return;
     }
 
-    if (!startWithComma())
+    if (!startWithComma())/*whats this? why !? have it already*/
         return;
     getVar();
-    if(!insertData())
+    if (!insertData())
         return;
 
 /*while not end of line*/
     while (*p != '\0') {
-
         /*if missing comma or mult commas*/
         if (!checkComma()) {
             return;
 
         } else {
             getVar();
-            if(!insertData())
+            if (!insertData())
                 return;
-            }
-
         }
 
     }
 
+}
 
 
 bool insertData() {
     if (!isNum(param)) {
-        printf("wrong input for data\n");
+        fprintf(stdout,"line %d: wrong input for data\n",lineCounter );
+        goodFile =false;
         return 0;
     } else {
         /*insert data*/
         curDNode->data.num = atoi(param);
 
-        if(!( curDNode->next = (dataNode *) malloc(sizeof(dataNode)))){
-            printf("Memory allocate failure");
+        if (!(curDNode->next = (dataNode *) malloc(sizeof(dataNode)))) {
+            fprintf(stdout,"line %d: Memory allocate failure\n",lineCounter );
+            goodFile =false;
             return 0;
         }
-        printf("data: %d\n", curDNode->data.num);
         curDNode = curDNode->next;
         DC++;
         return 1;
@@ -324,7 +335,8 @@ bool checkComma() {
     char check2[MAX_LENGTH];
     int counter = 0;
     if (sscanf(param, "%s %s", check1, check2) > 1) {
-        printf("Missing comma\n");
+        fprintf(stdout,"line %d: Missing comma\n",lineCounter );
+        goodFile =false;
         return false;
     }
     skipWhite();
@@ -334,21 +346,23 @@ bool checkComma() {
     while (*p == ',') {
         counter++;
         p++;
-
         skipWhite();
     }
     /*if no data after comma*/
     if (*p == '\0') {
-        printf("Missing Data after comma\n");
+        fprintf(stdout,"line %d: Missing Data after comma\n",lineCounter );
+        goodFile =false;
         return false;
     }
     /*missing comma*/
     if (counter == 0) {
-        printf("Missing comma\n");
+        fprintf(stdout,"line %d: Missing comma\n",lineCounter );
+        goodFile =false;
         return false;
         /*more then one comma*/
     } else if (counter > 1) {
-        printf("Multiple consecutive commas\n");
+        fprintf(stdout,"line %d: Multiple consecutive commas\n",lineCounter );
+        goodFile =false;
         return false;
     }
     return true;
@@ -507,7 +521,7 @@ void fillin_extraBinCode(int num) {
     char binary[22];
     int2bin(num, binary, 21);
     IC++;
-    if(!( curCNode->next= (CNode *) malloc(sizeof(CNode)))){// set new node for int adress
+    if (!(curCNode->next = (CNode *) malloc(sizeof(CNode)))) {// set new node for int adress
         printf("Memory allocate failure");
         return;
     }
@@ -642,7 +656,7 @@ void get_opcode(char *opcode) {
         printf("----------------------------------end of the command %s\n", Code);
         return;
     }
-    if(!(curCNode->next = (CNode *) malloc(sizeof(CNode)))){// set new node for int adress
+    if (!(curCNode->next = (CNode *) malloc(sizeof(CNode)))) {// set new node for int adress
         printf("Memory allocate failure");
         return;
     }

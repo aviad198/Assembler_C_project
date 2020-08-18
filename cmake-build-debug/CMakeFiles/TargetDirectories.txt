@@ -1,3 +1,0 @@
-/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/final_project_C.dir
-/home/aviad/CLionProjects/mmn14n/Assembler_C_project/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -59,7 +59,6 @@ bool inLabelTab (char param[50]){
     symboleTabel *tempNode;
     tempNode = sHead;
     while (tempNode != NULL){
-        //printf("the sign labl of the table of symbols %s\n", tempNode-> sign.label);
         if (strcmp(tempNode->sign.label, param)==0) {
             return 1;
         }
@@ -80,9 +79,13 @@ void addSign(char label[50], char character[50], int value) {
     curSNode->sign.value = (value);
     strcpy(curSNode->sign.car, character);
 
-    symboleTabel *newSNode = (symboleTabel *) malloc(sizeof(symboleTabel));
-    curSNode->next = newSNode;
-    curSNode = newSNode;
+
+    if(!(curSNode->next = (symboleTabel *) malloc(sizeof(symboleTabel)))){
+        printf("Memory allocate failure");
+        return;
+    }
+
+    curSNode = curSNode->next;
     curSNode->sign.label[0] = '\0';
 
 }

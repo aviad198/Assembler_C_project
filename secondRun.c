@@ -8,34 +8,45 @@ void secondRun() {
         if (inLabelTab(param))
             getParam();
         switch (isGuide(param)) {
-            case 4: {
-                if (isLabel(param)) {
+            /*entry command*/
+            case 3: {
+                getParam();
+                if(!inLabelTab(param)){
+                    printf("Error in entry, no such label\n");
+                    break;
+                }
                     curSNode = sHead;
                     while (curSNode != NULL) {
-                        if (strcmp(curSNode->sign.label, label) == 0) {
+                        if (strcmp(curSNode->sign.label, param) == 0) {
                             strcat(curSNode->sign.car, ", entry");
-                            continue;
+                            hasEntry = true;
                         }
+                        curSNode =curSNode->next;
                     }
-                    printf("Error in entry, no such label");
-                    continue;
-                } else
-                    printf("not a valid label");
-            }
-                break;
+
+            }break;
 
         }
     }
-    if(goodFile) {
+ //   if(goodFile) {
+
+
         if (hasExtern) {
 
         }
 
         if (hasEntry){
-
+        const char entryW[10] = "entry";
+        curSNode = sHead;
+            while (curSNode != NULL) {
+                if (strstr(curSNode->sign.car, entryW)){
+                    printf("%s\t%07d\n",curSNode->sign.label,curSNode->sign.value+100);
+                }
+                curSNode =curSNode->next;
+            }
         }
 
-    }
+ //   }
     free(curSNode);
     free(curDNode);
     free(curCNode);

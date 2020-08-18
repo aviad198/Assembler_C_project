@@ -1,1 +1,0 @@
-/usr/bin/cc -g   CMakeFiles/final_project_C.dir/main.c.o CMakeFiles/final_project_C.dir/FirstRun.c.o CMakeFiles/final_project_C.dir/secondRun.c.o CMakeFiles/final_project_C.dir/functionsForAssembler.c.o  -o final_project_C 

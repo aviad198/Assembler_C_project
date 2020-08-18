@@ -38,8 +38,8 @@ void getVar();
 
 void addString();
 
-symboleTabel *curSNode;
-dataNode *curDNode;
+
+
 bool labelFlag = 0;
 
 
