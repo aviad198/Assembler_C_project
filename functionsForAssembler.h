@@ -88,3 +88,6 @@ void secondRun();
 bool goodFile;
 bool hasExtern;
 bool hasEntry;
+
+int IC;
+int DC;

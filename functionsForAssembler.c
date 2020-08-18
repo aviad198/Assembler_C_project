@@ -80,7 +80,7 @@ void addSign(char label[50], char character[50], int value) {
     strcpy(curSNode->sign.car, character);
 
 
-    if(!(curSNode->next = (symboleTabel *) malloc(sizeof(symboleTabel)))){
+    if(!(curSNode->next = (symboleTabel *) calloc(1,sizeof(symboleTabel)))){
         printf("Memory allocate failure");
         return;
     }

@@ -8,8 +8,7 @@
 #include <math.h>
 #define TOTAL_OP 16
 
-int IC =100;
-int DC =0;
+
 
 extern FILE *fp;
 
