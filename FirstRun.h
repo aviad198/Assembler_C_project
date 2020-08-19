@@ -8,7 +8,8 @@
 #include <math.h>
 #define TOTAL_OP 16
 
-
+int IC =100;
+int DC =0;
 
 extern FILE *fp;
 
@@ -20,7 +21,7 @@ bool isLabel(char param[50]);
 
 bool checkComma();
 
-void get_opcode(char *opcode);
+void getCommand(char *command);
 
 void addSign(char label[50], char character[5], int value);
 
@@ -28,22 +29,22 @@ void addData();
 
 
 
-int validate_command(char *opcode);
+int validateCommand(char *command);
 
 
-void fillin_op_table();
+void fillinOpTable();
 
 void getVar();
 
 void addString();
 
-
-
+symboleTabel *curSNode;
+dataNode *curDNode;
 bool labelFlag = 0;
 
 
 
-void get_opcode(char *opcode);
+void getCommand(char *command);
 
 /*struc for operatons table*/
 typedef struct{
@@ -59,6 +60,5 @@ typedef struct{
 
 bool insertData();
 
-
-
+int getAdress(char label[200]);
 op opTable[16];

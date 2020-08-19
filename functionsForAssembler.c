@@ -40,7 +40,9 @@ void skipWhite() {
 
 /*if its a guide command*/
 int isGuide(char param[50]) {
-    if (!strcmp(param, ".data"))
+    if(!strcmp(param, "") || param[0]=='0')
+        return 5;
+    else if (!strcmp(param, ".data"))
         return 1;
     else if (!strcmp(param, ".string"))
         return 2;
@@ -48,19 +50,19 @@ int isGuide(char param[50]) {
         return 3;
     else if (!strcmp(param, ".extern"))
         return 4;
-
     return 0;
 }
 
 
 
 
-bool inLabelTab (char param[50]){
+symboleTabel * inLabelTab (char param[50]){
     symboleTabel *tempNode;
     tempNode = sHead;
-    while (tempNode != NULL){
+    while (tempNode->next != NULL){
+        //printf("the sign labl of the table of symbols %s\n", tempNode-> sign.label);
         if (strcmp(tempNode->sign.label, param)==0) {
-            return 1;
+            return tempNode;
         }
         tempNode = tempNode->next;
     }
@@ -79,14 +81,10 @@ void addSign(char label[50], char character[50], int value) {
     curSNode->sign.value = (value);
     strcpy(curSNode->sign.car, character);
 
-
-    if(!(curSNode->next = (symboleTabel *) calloc(1,sizeof(symboleTabel)))){
-        printf("Memory allocate failure");
-        return;
-    }
-
-    curSNode = curSNode->next;
-    curSNode->sign.label[0] = '\0';
+    curSNode -> next = (symboleTabel *) calloc(1,sizeof(symboleTabel));
+    curSNode = curSNode -> next;
+    //curSNode ->
+    //curSNode->sign.label[0] = '\0';
 
 }
 

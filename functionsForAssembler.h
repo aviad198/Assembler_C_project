@@ -18,12 +18,12 @@
 #define MAX_LENGTH 200
 
 
-
+char inputOrg[MAX_LENGTH];
 char label[50];
 char line[MAX_LENGTH];
 char *p;
 char param[MAX_LENGTH];
-bool inLabelTab (char param[50]);
+
 bool isLabel(char param1[50]);
 void pointAfterParam();
 void getParam();
@@ -48,7 +48,7 @@ symboleTabel* sHead;
 symboleTabel* curSNode;
 
 typedef union Data{
-    int num;
+    unsigned num : 24;
     char ch;
 }Data;
 
@@ -91,3 +91,5 @@ bool hasEntry;
 
 int IC;
 int DC;
+
+symboleTabel * inLabelTab (char param[50]);

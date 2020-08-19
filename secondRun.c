@@ -1,5 +1,8 @@
 #include "secondRun.h"
 int fileLine=0;
+
+
+
 void secondRun() {
     fseek(fp, 0, SEEK_SET);
     while (fgets(line, MAX_LENGTH, fp)) {
@@ -29,25 +32,63 @@ void secondRun() {
                 break;
 
         }
-        addLabelOperand();
+
+
     }
+    curSNode = sHead;
+    while (curSNode != NULL) {
+        printf("%s\t%d\t%s\n",curSNode->sign.label,curSNode->sign.value,curSNode->sign.car);
+        curSNode = curSNode->next;
+    }
+
+    addLabelOperand();
+
     if (goodFile) {
-
-
-        if (hasExtern) {
-
+        char objF[100];
+        char entF[100];
+        char extF[100];
+        strcpy(objF,inputOrg);
+        strcpy(entF,inputOrg);
+        strcpy(extF,inputOrg);
+        if(!(objFile = fopen(strcat(objF,".ob"),"w"))){/*file dose not exist*/
+            fprintf(stdout, "File cant be created\n");
+            return;
         }
+        printObjFile();
+
+       if (hasExtern){
+        if(!(extFile = fopen(strcat(extF,".ext"),"w"))){/*file dose not exist*/
+            fprintf(stdout, "File cant be created\n");
+            return;}
+           symboleTabel *tempSNode;
+           CNode *tempCNode;
+           tempCNode = Chead;
+           while (tempCNode != NULL) {
+               tempSNode = inLabelTab(tempCNode->code.operandLabel);
+               if(tempSNode!=NULL){
+                   if (strstr(tempSNode->sign.car, "external") != NULL){
+                       fprintf(extFile,"%s\t%07d\n",tempCNode->code.operandLabel,tempCNode->code.adress);
+                   }
+               }
+               tempCNode =tempCNode->next;
+           }
+           }
+
 
         if (hasEntry) {
+            if(!(entFile = fopen(strcat(entF,".ent"),"w"))){/*file dose not exist*/
+                fprintf(stdout, "File cant be created\n");
+                return;
+            }
             const char entryW[10] = "entry";
             curSNode = sHead;
-            while (curSNode != NULL) {
+            while (curSNode->next != NULL) {
                 if (strstr(curSNode->sign.car, entryW)) {
-                    printf("%s\t%07d\n", curSNode->sign.label, curSNode->sign.value);
+                    fprintf(entFile,"%s\t%07d\n", curSNode->sign.label, curSNode->sign.value);
                 }
                 curSNode = curSNode->next;
             }
-        }
+       }
 
     }
     free(curSNode);
@@ -58,30 +99,69 @@ void secondRun() {
     free(Chead);
 
 }
-    void addLabelOperand() {
-        char adress[22];
-        symboleTabel *tempSNode;
-        tempSNode = sHead;
-        CNode *tempCNode;
-        tempCNode = Chead;
-        while (tempCNode != NULL) {
-            while (tempSNode != NULL) {
-                //printf("the sign labl of the table of symbols %s\n", tempNode-> sign.label);
-                if (tempCNode->code.operandLabel && strcmp(tempCNode->code.operandLabel, tempSNode->sign.label) == 0) {
-                    //tempSNode->sign.value += IC; // make sure to move the IC to thr right header
-                    int2bin(tempSNode->sign.value, adress, 21);/// assuming that IC was add to DC
-                    strncpy(tempCNode->code.binCode + 0, 21, adress);
-                    if (strstr(tempSNode->sign.car, ".entry") == 0) //its entry or somthing else
-                        strncpy(tempCNode->code.binCode + 23, 1, "1");
-                    else
-                        strncpy(tempCNode->code.binCode + 22, 1, "1");
-                } else {
-                    fprintf(stdout, "the operand label doesnt mutch the lables in the symbol table labels\n");
-                    return;
+void addLabelOperand(){
+    char adress[22];
+    symboleTabel *tempSNode;
+    CNode *tempCNode;
+    tempCNode = Chead;
+    while (tempCNode != NULL) {
+            //printf("the sign label of the table of symbols %s\n", tempNode-> sign.label);
+            if (tempCNode->code.operandLabel[0]!='\0' && tempCNode->code.operandLabel[0] != '&') {
+                tempSNode = inLabelTab(tempCNode->code.operandLabel);
+                if(tempSNode==NULL) {
+                    fprintf(stdout, "the operand label %s doesnt match the labels in the symbol table labels\n",tempCNode->code.operandLabel);
+                    goodFile =false;
+                    tempCNode = tempCNode->next;
+                    continue;
                 }
-                tempSNode = tempSNode->next;
+
+                int2bin(tempSNode->sign.value, adress, 21);/// assuming that IC was add to DC
+                strncpy(tempCNode->code.binCode + 0, adress, 21);
+                if (strstr(tempSNode->sign.car, "external") != NULL) //its entry or somthing else
+                    strncpy(tempCNode->code.binCode + 23, "1", 1);
+                else
+                    strncpy(tempCNode->code.binCode + 22, "1", 1);
+            }
+            else if(tempCNode->code.operandLabel[0] == '&') {
+                int distance;
+               tempSNode = inLabelTab(tempCNode->code.operandLabel+1);
+                if(tempSNode==NULL) {
+                    fprintf(stdout, "the operand label %s doesnt match the labels in the symbol table labels\n",tempCNode->code.operandLabel);
+                    goodFile =false;
+                    tempCNode = tempCNode->next;
+                    continue;
+                }
+                distance = tempSNode->sign.value - tempCNode->code.adress+1;
+                int2bin(distance, adress, 21);
+                strncpy(tempCNode->code.binCode + 0,adress , 21);
+
+            } else{
+                tempCNode = tempCNode->next;
+                continue;
             }
 
-            tempCNode = tempCNode->next;
+        tempCNode = tempCNode->next;
         }
     }
+
+
+
+void printObjFile(){
+    CNode *tempCNode;
+    dataNode *tempDNode;
+    tempCNode = Chead;
+    tempDNode = dHead;
+    while (tempCNode->next != NULL) {
+        unsigned long value = strtoul(tempCNode->code.binCode, NULL, 2);
+        // convert integer to hex string
+        //printf("%s\n",tempCNode->code.binCode);
+        fprintf(objFile,"%07d\t%06x\n", tempCNode->code.adress,value);
+        tempCNode = tempCNode->next;
+    }
+    while (tempDNode->next != NULL){
+        fprintf(objFile,"%07d\t%06x\n", IC ,tempDNode->data);
+        IC++;
+        tempDNode = tempDNode->next;
+    }
+
+}
