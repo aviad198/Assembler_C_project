@@ -1,69 +1,20 @@
 
 #include "FirstRun.h"
 
-//IC = 100;
-//DC = 0;
-int opCode[TOTAL_OP] = {0, 1, 2, 2, 4, 5, 5, 5, 5, 9, 9, 9, 12, 13, 14, 15};
-char allOp[TOTAL_OP][4] = {"mov", "cmp", "add", "sub", "lea", "clr", "not", "inc", "dec", "jmp", "bne", "jsr", "red",
-                           "prn", "rts", "stop"};
-int func[TOTAL_OP] = {0, 0, 1, 2, 0, 1, 2, 3, 4, 1, 2, 3, 0, 0, 0, 0};
-int sourceMeth[TOTAL_OP][4] = {{0,  1, -1, 3},
-                               {0,  1, -1, 3},
-                               {0,  1, -1, 3},
-                               {0,  1, -1, 3},
-                               {-1, 1, -1, -1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1},
-                               {-1}};
-int targMeth[TOTAL_OP][4] = {{-1, 1, -1, 3},
-                             {0,  1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, -1, 3},
-                             {-1, 1, 2,  -1},
-                             {-1, 1, 2,  -1},
-                             {-1, 1, 2,  -1},
-                             {-1, 1, -1, 3},
-                             {0,  1, -1, 3},
-                             {-1},
-                             {-1}};
-int oprndN[TOTAL_OP] = {2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0};
-int lineCounter = 0;
+
+void createNods();
 
 /*start first run */
 void firstRun() {
+    IC = 100;
+    DC = 0;
+    lineCounter = 0;
     goodFile = true;
     hasExtern = false;
     hasEntry = false;
     /*new heads for linked lists */
-    if (!(sHead = (symboleTabel *) calloc(1, sizeof(symboleTabel)))) {
-        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
-        return;
-    }
-    curSNode = sHead;
-    //curSNode->sign.label[0] = '\0';
-    if (!(dHead = (dataNode *) calloc(1, sizeof(dataNode)))) {
-        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
-        return;
-    }
-    curDNode = dHead;
-    if (!(Chead = (CNode *) calloc(1, sizeof(CNode)))) {
-        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
-        return;
-    }
-    curCNode = Chead;
+    createNods();
+    /*fill oprand tabel*/
     fillinOpTable();
     /*while file has a line*/
     while (fgets(line, MAX_LENGTH, fp)) {
@@ -73,6 +24,7 @@ void firstRun() {
         /*points to first letter in line*/
         p = line;
         skipWhite();
+        /*if a comma*/
         if (*p == ';') {
             continue;
         }
@@ -80,48 +32,42 @@ void firstRun() {
         /*turn on flag if there is a sign*/
         if (labelFlag = isLabel(param) == 1) {
             if (inLabelTab(label)) {
-                fprintf(stdout, "line %d: already is label with same name\n", lineCounter);
+                fprintf(stdout, "line %d: There is already a label with the same name\n", lineCounter);
                 goodFile = false;
                 continue;
             }
-
-        }
-        /*gets next param*/
-        if (labelFlag) {
+            /*gets next param*/
             getParam();
         }
+
         /*if its a guide command (.data/.string/.extern/.entry)*/
         switch (isGuide(param)) {
-            case 5:
-                continue;
-                /*.data guide */
+            /*.data guide */
             case 1: {
                 if (labelFlag)
                     addSign(label, "data", DC);
                 addData();
             }
                 break;
-                /*.string guide */
+            /*.string guide */
             case 2: {
-
                 if (labelFlag)
                     addSign(label, "data", DC);
-
                 addString();
             }
                 break;
-                /*entry guide*/
+            /*entry guide -does nothing*/
             case 3: {
             }
                 break;
-                /*extern guide*/
+            /*extern guide*/
             case 4: {
                 if (labelFlag) {
-                    fprintf(stdout, "line %d: Warning Label before entry command\n", lineCounter);
+                    fprintf(stdout, "Warning: line %d: Label before entry command\n", lineCounter);
                 }
                 getParam();
                 if (*param == '\n') {
-                    fprintf(stdout, "line %d: missing extern label", lineCounter);
+                    fprintf(stdout, "line %d: missing external label input", lineCounter);
                     continue;
                 }
                 if (!inLabelTab(param)) {
@@ -130,7 +76,10 @@ void firstRun() {
                 hasExtern = true;
             }
                 break;
-
+            /*empty line*/
+            case 5:
+                continue;
+            /*Its a command line*/
             default: {
                 if (labelFlag) {
                     if (inLabelTab(label))
@@ -155,6 +104,26 @@ void firstRun() {
 
 }
 
+/*Create nods for every run*/
+void createNods() {
+    if (!(sHead = (symboleTabel *) calloc(1, sizeof(symboleTabel)))) {
+        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
+        return;
+    }
+    curSNode = sHead;
+    //curSNode->sign.label[0] = '\0';
+    if (!(dHead = (dataNode *) calloc(1, sizeof(dataNode)))) {
+        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
+        return;
+    }
+    curDNode = dHead;
+    if (!(Chead = (CNode *) calloc(1, sizeof(CNode)))) {
+        fprintf(stdout, "line %d: \"Memory allocation failed\"\n", lineCounter);
+        return;
+    }
+    curCNode = Chead;
+}
+
 
 /*method to add string data into data image
  *
@@ -172,7 +141,7 @@ void addString() {
     }
     /*dosnt start string with " */
     if (*p != '\"') {
-        fprintf(stdout, "line %d: has to start with \" \n", lineCounter);
+        fprintf(stdout, "line %d: string has to start with \" \n", lineCounter);
         goodFile = false;
         return;
     }
@@ -199,7 +168,6 @@ void addString() {
 
         DC++;
         p++;
-        skipWhite();
         check++;
     }
     /*check if last char is "*/
@@ -456,29 +424,29 @@ void int2bin(int integer, char *binary, int n) {
     for (i = 0; i < n; i++)
         binary[i] = (integer & (int) 1 << (n - i - 1)) ? '1' : '0';
     binary[n] = '\0';
-    printf("this is the binary code inside int2bin %s\n", binary);
+    // printf("this is the binary code inside int2bin %s\n", binary);
 }
 
 void fillinBinOp(int funN, int opcodeN) {
     char function[6];
     char opcode[7];
     memset(curCNode->code.binCode, '0', 24);
-    printf("the binary code of the first word before adding anything %s \n", curCNode->code.binCode);
+    //  printf("the binary code of the first word before adding anything %s \n", curCNode->code.binCode);
     int2bin(funN, function, 5);
     int2bin(opcodeN, opcode, 6);
-    printf("this is the binary code of func %s \n", function);
-    printf("this is the binary code of opcode %s \n", opcode);
+    // printf("this is the binary code of func %s \n", function);
+    // printf("this is the binary code of opcode %s \n", opcode);
     strncpy(curCNode->code.binCode + 16, function, 5);
     strncpy(curCNode->code.binCode + 0, opcode, 6);
-    printf("the binary code of the first word after opcode command is %s \n", curCNode->code.binCode);
+    // printf("the binary code of the first word after opcode command is %s \n", curCNode->code.binCode);
     curCNode->code.adress = IC;
     strncpy(curCNode->code.binCode + 21, "1", 1);
-    printf("the binary code of the first word command is %s \n", curCNode->code.binCode);
+    // printf("the binary code of the first word command is %s \n", curCNode->code.binCode);
 
     if (labelFlag)
         strcpy(curCNode->code.opLabel, label);
-    printf("the adress of the first bincode is %d\n", curCNode->code.adress);
-    printf("the label of the command of the first bincode is %s\n", curCNode->code.opLabel);
+    // printf("the adress of the first bincode is %d\n", curCNode->code.adress);
+    // printf("the label of the command of the first bincode is %s\n", curCNode->code.opLabel);
 
 }
 
@@ -494,12 +462,12 @@ void fillinFirstBinCode(int methCode, int regNum, int methInd, int regInd, CNode
     int2bin(regNum, regN, 3);
     strncpy(firstBin->code.binCode + regInd, regN, 3);
     int2bin(methCode, methC, 2);
-    printf("this is the output of int2bin for the method code %s\n", methC);
-    printf("this is the output of int2bin for the register code num %s\n", regN);
+    // printf("this is the output of int2bin for the method code %s\n", methC);
+    // printf("this is the output of int2bin for the register code num %s\n", regN);
     strncpy(firstBin->code.binCode + methInd, methC, 2);
-    printf("the binary code of the first word after adding the registry and method command is %s \n",
-           firstBin->code.binCode);
-    printf("the adress of the first bincode is %d\n", firstBin->code.adress);
+    // printf("the binary code of the first word after adding the registry and method command is %s \n",
+//           firstBin->code.binCode);
+    // printf("the adress of the first bincode is %d\n", firstBin->code.adress);
 }
 
 void fillinExtraBinCode(int num) {
@@ -507,7 +475,7 @@ void fillinExtraBinCode(int num) {
     int2bin(num, binary, 21);
     IC++;
     if (!(curCNode->next = (CNode *) calloc(1, sizeof(CNode)))) {// set new node for int adress
-        fprintf(stdout, "line %d: memory allocation failed %s\n", lineCounter);
+        fprintf(stdout, "line %d: memory allocation failed\n", lineCounter);
         goodFile = false;
         return;
     }
@@ -516,11 +484,11 @@ void fillinExtraBinCode(int num) {
     memset(curCNode->code.binCode, '0', 24);
     //curCNode->code.binCode[24] = '\0';
     strncpy(curCNode->code.binCode + 0, binary, 21); // complete the rest of the binary code
-    printf("the binary code of extra word command is %s \n", curCNode->code.binCode);
+    //  printf("the binary code of extra word command is %s \n", curCNode->code.binCode);
     if (labelFlag)
         strcpy(curCNode->code.opLabel, label);
-    printf("the adress of the extra bincode is %d\n", curCNode->code.adress);
-    printf("the label of the command of the extra bincode is %s\n", curCNode->code.opLabel);
+    // printf("the adress of the extra bincode is %d\n", curCNode->code.adress);
+    // printf("the label of the command of the extra bincode is %s\n", curCNode->code.opLabel);
 }
 //getOperand command check if which type of operand was recieved and check if it is valid
 bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *isExtraBin, CNode *firstCNode) {
@@ -530,7 +498,7 @@ bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *i
         {
             long num;
             if (checkIntMeth0(arg, &num)) {
-                printf("the operand %s is valid for %d method of command %s \n", arg, meth[0], opTable[opInd].opName);
+                // printf("the operand %s is valid for %d method of command %s \n", arg, meth[0], opTable[opInd].opName);
                 fillinFirstBinCode(0, 0, methInd, regInd, firstCNode);
                 *isExtraBin = 1;
                 fillinExtraBinCode(num);
@@ -542,7 +510,7 @@ bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *i
             //the operand type is register r(number: 0-7)
         } else if (checkRegisterMeth3(arg) && meth[3] == 3) // method for register operands (number 3)
         {
-            printf("the operand %s is valid for %d method of command %s \n", arg, meth[3], opTable[opInd].opName);
+            // printf("the operand %s is valid for %d method of command %s \n", arg, meth[3], opTable[opInd].opName);
             fillinFirstBinCode(3, atoi(arg + 1), methInd, regInd, firstCNode);
             return 0;
 
@@ -550,7 +518,7 @@ bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *i
         } else if (arg[0] == 38 && meth[2] == 2) //relative method (number 2)
         {
             if (checkLabel(arg + 1)) {
-                printf("the operand %s is valid for %d method of command %s \n", arg, meth[2], opTable[opInd].opName);
+                //  printf("the operand %s is valid for %d method of command %s \n", arg, meth[2], opTable[opInd].opName);
                 fillinFirstBinCode(2, 0, methInd, regInd, firstCNode);
                 *isExtraBin = 1;
                 fillinExtraBinCode(0);
@@ -562,7 +530,7 @@ bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *i
         } else {
             /*the operand type is a label*/
             if (checkLabel(arg) && meth[1] == 1) {
-                printf("the operand %s is valid for %d method of command %s \n", arg, meth[1], opTable[opInd].opName);
+                //  printf("the operand %s is valid for %d method of command %s \n", arg, meth[1], opTable[opInd].opName);
                 fillinFirstBinCode(1, 0, methInd, regInd, firstCNode);
                 *isExtraBin = 1;
                 fillinExtraBinCode(0);
@@ -577,7 +545,7 @@ bool getOperand(int opInd, char *arg, int *meth, int methInd, int regInd, int *i
     } else {
         //the operand type is a label
         if (checkLabel(arg) && meth[1] == 1) {
-            printf("the operand %s is valid for %d method of command %s \n", arg, meth[1], opTable[opInd].opName);
+            //  printf("the operand %s is valid for %d method of command %s \n", arg, meth[1], opTable[opInd].opName);
             fillinFirstBinCode(1, 0, methInd, regInd, firstCNode);
             *isExtraBin = 1;
             fillinExtraBinCode(0);
@@ -615,7 +583,7 @@ void getCommand(char *commandArg) {
     strcpy(command, commandArg);
 //check if the command is valid-exist in the command table
     if ((opInd = validateCommand(command)) != -1) {
-        printf("the index of the command %s is %d\n", command, opInd);
+        //    printf("the index of the command %s is %d\n", command, opInd);
         //command that receives exactly 2 operands
         if (opTable[opInd].oprndN == 2) {
             if (startWithComma())
@@ -624,13 +592,13 @@ void getCommand(char *commandArg) {
             if (!checkComma())
                 return;
             strcpy(sourceOP, param);
-            printf("this is the source operand %s of the command %s\n", sourceOP, command);
+            //  printf("this is the source operand %s of the command %s\n", sourceOP, command);
 
             getParam();
             if (!checkNonValOp())
                 return;
             strcpy(targOP, param);
-            printf("this is the targ operand %s of the command %s\n", targOP, command);
+            //  printf("this is the targ operand %s of the command %s\n", targOP, command);
             //if (sourceOP[0] != '\0' && targOP[0] != '\0') {
             fillinBinOp(opTable[opInd].func, opTable[opInd].opcode);
             firstCNode = curCNode;
@@ -643,7 +611,7 @@ void getCommand(char *commandArg) {
                 if (getOperand(opInd, targOP, opTable[opInd].targMeth, 11, 13, &isExtraBin, NULL))
                     return;
             }
-            printf("----------------------------------end of the command %s\n", command);
+            //  printf("----------------------------------end of the command %s\n", command);
             //}
             // command that receives exactly 1 operand
         } else if (opTable[opInd].oprndN == 1) {
@@ -653,7 +621,7 @@ void getCommand(char *commandArg) {
             if (!checkNonValOp())
                 return;
             strcpy(targOP, param);
-            printf("this is the targ operand %s of the command %s\n", targOP, command);
+            //  printf("this is the targ operand %s of the command %s\n", targOP, command);
 
             //getParam();
             //strcpy(nonValOP, param);
@@ -661,7 +629,7 @@ void getCommand(char *commandArg) {
             fillinBinOp(opTable[opInd].func, opTable[opInd].opcode);
             if (getOperand(opInd, targOP, opTable[opInd].targMeth, 11, 13, &isExtraBin, NULL))
                 return;
-            printf("----------------------------------end of the command %s\n", command);
+            //  printf("----------------------------------end of the command %s\n", command);
 
             //} //command that receives no operands
         } else if (opTable[opInd].oprndN == 0) {
@@ -670,15 +638,15 @@ void getCommand(char *commandArg) {
             //if (checkNonValOp)
             if (!checkNonValOp())
                 return;
-            printf("no targ operand of the command %s\n", command);
+            //  printf("no targ operand of the command %s\n", command);
             fillinBinOp(opTable[opInd].func, opTable[opInd].opcode);
-            printf("----------------------------------end of the command %s\n", command);
+            //   printf("----------------------------------end of the command %s\n", command);
         }
     } else {
         fprintf(stdout, "line %d: The command %s entered is not valid, Please eneter a valid command\n", lineCounter,
                 command);
         goodFile = false;
-        printf("----------------------------------end of the command %s\n", command);
+        // printf("----------------------------------end of the command %s\n", command);
         return;
     }
     if (!(curCNode->next = (CNode *) calloc(1, sizeof(CNode)))) {// set new node for int adress

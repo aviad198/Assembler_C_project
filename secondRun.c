@@ -1,9 +1,10 @@
 #include "secondRun.h"
-int fileLine=0;
+int fileLine;
 
 
 
 void secondRun() {
+    fileLine=0;
     fseek(fp, 0, SEEK_SET);
     while (fgets(line, MAX_LENGTH, fp)) {
         ++fileLine;
@@ -16,7 +17,7 @@ void secondRun() {
             case 3: {
                 getParam();
                 if (!inLabelTab(param)) {
-                    printf("Error in entry, no such label\n");
+                    fprintf(stdout,"Line %d: Error in entry, no such label\n", fileLine);
                     break;
                 }
                 curSNode = sHead;
@@ -35,11 +36,11 @@ void secondRun() {
 
 
     }
-    curSNode = sHead;
-    while (curSNode != NULL) {
-        printf("%s\t%d\t%s\n",curSNode->sign.label,curSNode->sign.value,curSNode->sign.car);
-        curSNode = curSNode->next;
-    }
+//    curSNode = sHead;
+//    while (curSNode != NULL) {
+//        printf("%s\t%d\t%s\n",curSNode->sign.label,curSNode->sign.value,curSNode->sign.car);
+//        curSNode = curSNode->next;
+//    }
 
     addLabelOperand();
 
@@ -55,7 +56,7 @@ void secondRun() {
             return;
         }
         printObjFile();
-
+    fclose(objFile);
        if (hasExtern){
         if(!(extFile = fopen(strcat(extF,".ext"),"w"))){/*file dose not exist*/
             fprintf(stdout, "File cant be created\n");
@@ -72,6 +73,7 @@ void secondRun() {
                }
                tempCNode =tempCNode->next;
            }
+           fclose(extFile);
            }
 
 
@@ -88,6 +90,7 @@ void secondRun() {
                 }
                 curSNode = curSNode->next;
             }
+            fclose(entFile);
        }
 
     }
@@ -154,7 +157,7 @@ void printObjFile(){
     while (tempCNode->next != NULL) {
         unsigned long value = strtoul(tempCNode->code.binCode, NULL, 2);
         // convert integer to hex string
-        //printf("%s\n",tempCNode->code.binCode);
+        //fprintf(objFile,"%s\n",tempCNode->code.binCode);
         fprintf(objFile,"%07d\t%06x\n", tempCNode->code.adress,value);
         tempCNode = tempCNode->next;
     }

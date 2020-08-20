@@ -40,9 +40,7 @@ void skipWhite() {
 
 /*if its a guide command*/
 int isGuide(char param[50]) {
-    if(!strcmp(param, "") || param[0]=='0')
-        return 5;
-    else if (!strcmp(param, ".data"))
+    if (!strcmp(param, ".data"))
         return 1;
     else if (!strcmp(param, ".string"))
         return 2;
@@ -50,6 +48,8 @@ int isGuide(char param[50]) {
         return 3;
     else if (!strcmp(param, ".extern"))
         return 4;
+    else if(!strcmp(param, "") || param[0]=='0')
+        return 5;
     return 0;
 }
 

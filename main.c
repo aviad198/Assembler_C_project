@@ -1,7 +1,14 @@
 #include "functionsForAssembler.h"
 #include "main.h"
 
+
+
 int main(int argc, char* argv[] ) {
+    runAssembler(argc, argv);
+    exit(0);
+}
+
+void runAssembler(int argc, char* argv[]) {
     char input[MAX_LENGTH];
     int i;
     if (argc<2)/*if there is less filenames then expected */
@@ -15,6 +22,7 @@ int main(int argc, char* argv[] ) {
             if(!(fp = fopen(input,"r")))/*file dose not exist*/
                 fprintf(stdout, "File not found\n");
             else{
+                fprintf(stdout, "\n\t-----Reading file: %s------\n", input);
                 firstRun();
                 secondRun();
                 fclose(fp);
@@ -22,5 +30,4 @@ int main(int argc, char* argv[] ) {
 
         }
     }
-    exit(0);
 }
