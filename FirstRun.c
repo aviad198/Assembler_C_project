@@ -78,6 +78,10 @@ void firstRun() {
                 break;
             /*empty line*/
             case 5:
+                if(labelFlag){
+                    fprintf(stdout, "line %d: missing operands\n", lineCounter);
+                    continue;
+                }
                 continue;
             /*Its a command line*/
             default: {
